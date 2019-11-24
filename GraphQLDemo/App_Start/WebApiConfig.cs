@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GraphQLDemo.DependencyInjection;
 using System.Web.Http;
 
 namespace GraphQLDemo
@@ -10,6 +8,8 @@ namespace GraphQLDemo
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var bootstrapper = new Bootstrapper();
+            config.DependencyResolver = bootstrapper.Resolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
